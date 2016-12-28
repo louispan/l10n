@@ -19,6 +19,3 @@ instance L10n locale Int where
 
 class GetLocale s a | s -> a where
     getLocale :: s -> a
-
-instance (s ~ a) => GetLocale a a where
-    getLocale = id
