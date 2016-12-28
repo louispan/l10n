@@ -1,7 +1,7 @@
 {-# LANGUAGE FlexibleInstances #-}
+{-# LANGUAGE FunctionalDependencies #-}
 {-# LANGUAGE ImplicitParams #-}
 {-# LANGUAGE MultiParamTypeClasses #-}
-{-# LANGUAGE FunctionalDependencies #-}
 {-# LANGUAGE TypeFamilies #-}
 
 module L10n where
@@ -20,5 +20,5 @@ instance L10n locale Int where
 class GetLocale s a | s -> a where
     getLocale :: s -> a
 
-instance GetLocale a a where
-    getLocale = id
+-- instance GetLocale a a where
+--     getLocale = id
