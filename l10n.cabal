@@ -18,7 +18,7 @@ library
   hs-source-dirs:      src
   exposed-modules:     L10n
                        L10n.TimeLocale
-  build-depends:       base >= 4.7 && < 5
+  build-depends:       base < 6
                      , text >= 1 && < 2
                      , time >= 1.5 && < 2
   ghc-options:         -Wall
