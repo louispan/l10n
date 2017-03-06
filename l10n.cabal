@@ -1,5 +1,5 @@
 name:                l10n
-version:             0.1.0.0
+version:             0.1.0.1
 synopsis:            Enables providing localization as typeclass instances in separate files.
 description:         Please see README.md
 homepage:            https://github.com/louispan/l10n#readme
