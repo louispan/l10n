@@ -1,8 +1,27 @@
 module L10n.TimeLocale where
 
-import qualified Data.Time.Format as TF
+import Data.Time.Format
+import Data.Time.LocalTime
+import Data.Semigroup
 
-enAUTimeLocale :: TF.TimeLocale
+enAUTimeLocale :: TimeLocale
 enAUTimeLocale =
-    TF.defaultTimeLocale
-    {TF.dateTimeFmt = "%a %e %b %X %Y", TF.dateFmt = "%d/%m/%Y"}
+    defaultTimeLocale
+    { dateTimeFmt = "%a %e %b %X %Y"
+    , dateFmt = "%d/%m/%Y"
+    , knownTimeZones =
+        tzs <> [ TimeZone (8*60) False "AWST"
+        , TimeZone ((8*60)+45) False "ACWST"
+        , TimeZone ((9*60)+30) False "ACST"
+        , TimeZone ((10*60)+30) True "ACDT"
+        , TimeZone (10*60) False "AEST"
+        , TimeZone (11*60) True "AEDT"
+        , TimeZone ((10*60)+30) False "LHST"
+        , TimeZone ((11*60)) True "LHDT"
+        ]
+    }
+  where
+    tzs = foldr go [] (knownTimeZones defaultTimeLocale)
+    go tz@(TimeZone _ _ "UT") ts = tz : ts
+    go tz@(TimeZone _ _ "GMT") ts = tz : ts
+    go _ ts = ts
